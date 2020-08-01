@@ -1,5 +1,6 @@
 package com.zundrel.wrenchanything.items;
 
+import com.zundrel.wrenchanything.WrenchAnything;
 import com.zundrel.wrenchanything.config.WrenchAnythingConfig;
 import com.zundrel.wrenchable.wrench.Wrench;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,12 +24,12 @@ public class WrenchItem extends Item implements Wrench {
 
     @Override
     public boolean canRepair(ItemStack itemStack_1, ItemStack itemStack_2) {
-        return WrenchAnythingConfig.hasDurability && ToolMaterials.IRON.getRepairIngredient().test(itemStack_2);
+        return WrenchAnything.config.hasDurability && ToolMaterials.IRON.getRepairIngredient().test(itemStack_2);
     }
 
     @Override
     public void onBlockWrenched(World world, ItemStack stack, PlayerEntity player, Hand hand, BlockHitResult result) {
-        if (!player.isCreative() && WrenchAnythingConfig.hasDurability) {
+        if (!player.isCreative() && WrenchAnything.config.hasDurability) {
             stack.damage(1, player, (playerEntity -> {
                 player.sendToolBreakStatus(hand);
             }));
@@ -37,7 +38,7 @@ public class WrenchItem extends Item implements Wrench {
 
     @Override
     public void onEntityWrenched(World world, ItemStack stack, PlayerEntity player, Hand hand, EntityHitResult result) {
-        if (!player.isCreative() && WrenchAnythingConfig.hasDurability) {
+        if (!player.isCreative() && WrenchAnything.config.hasDurability) {
             stack.damage(1, player, (playerEntity -> {
                 player.sendToolBreakStatus(hand);
             }));

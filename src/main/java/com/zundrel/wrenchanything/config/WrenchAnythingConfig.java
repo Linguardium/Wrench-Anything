@@ -1,17 +1,14 @@
 package com.zundrel.wrenchanything.config;
 
-import com.zundrel.wrenchanything.WrenchAnything;
-import io.github.indicode.fabric.tinyconfig.ModConfig;
+import me.sargunvohra.mcmods.autoconfig1u.ConfigData;
+import me.sargunvohra.mcmods.autoconfig1u.annotation.Config;
 
-public class WrenchAnythingConfig {
-    public static ModConfig wrenchableConfig = new ModConfig(WrenchAnything.MODID);
-    public static boolean hasDurability = false;
-    public static int maxDurability = 100;
+import static com.zundrel.wrenchanything.WrenchAnything.MODID;
 
-    public static void init() {
-        wrenchableConfig.configure(config -> {
-            hasDurability = config.getBool("hasDurability", hasDurability, null);
-            maxDurability = config.getInt("maxDurability", 100, null);
-        });
-    }
+@Config(name = "wrenchanything")
+public
+class WrenchAnythingConfig implements ConfigData {
+    public boolean hasDurability = false;
+    public int maxDurability = 100;
+
 }

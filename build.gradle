@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '0.2.7-SNAPSHOT'
+	id 'fabric-loom' version '0.4-SNAPSHOT'
 	id 'maven-publish'
 	id "com.wynprice.cursemaven" version "1.2.2"
 }
@@ -25,7 +25,8 @@ repositories {
 		}
     }
 	maven { url 'http://server.bbkr.space:8081/artifactory/libs-release' }
-    maven { url 'https://jitpack.io' }
+    maven { url 'https://dl.bintray.com/zundrel/wrenchable' }
+	maven { url 'https://jitpack.io' } // TinyConfig
 }
 
 dependencies {
@@ -35,8 +36,11 @@ dependencies {
 
 	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	
-	modImplementation ("com.github.Zundrel:Wrenchable:${project.wrenchable_version}") { exclude(module: "modmenu") }
-    include "com.github.Zundrel:Wrenchable:${project.wrenchable_version}"
+	modImplementation ("com.zundrel:wrenchable:${project.wrenchable_version}") { exclude(module: "modmenu") }
+    include "com.zundrel:wrenchable:${project.wrenchable_version}"
+	modApi "me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}"
+	include "me.sargunvohra.mcmods:autoconfig1u:${project.autoconfig_version}"
+
 }
 
 processResources {
